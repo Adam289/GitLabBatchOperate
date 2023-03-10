@@ -44,6 +44,8 @@ const cliProgress = require('cli-progress');
     .help(true)
     .argv
 
+  // argv.url = 'TODO 输入你的gitlab服务地址如https://git.xxx.etch:9443/'
+  // argv.token = 'TODO 输入你的token'
   const baseUrl = argv.url || 'https://gitlab.com'
   if(argv.verbose){
     console.log(`Set gitlab base url to ${baseUrl}`)
@@ -134,6 +136,7 @@ const cliProgress = require('cli-progress');
         console.error(`Path ${repoPath} exist and not a directory. Skipped.`)
       } else {
         console.log(`Pulling ${repoName}`)
+        // TODO 这里的pull 可以替换为checkout develop或其他命令
         const stdout = await cmdAsync(`git -C "${repoPath}" pull`).catch(
           console.log
         )
